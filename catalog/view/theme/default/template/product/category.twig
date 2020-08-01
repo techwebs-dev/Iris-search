@@ -1,0 +1,49 @@
+{{ header }}
+{{ content_bottom }}
+</header>
+<main class="page-content  irises" id="content">
+  <h2 class="irises__title  title">{{ heading_title }}</h2>
+    {{ content_top }}
+  <section class="irises__catalog  catalog">
+    <ul class="catalog__list">
+        {% for product in products %}
+          <li class="catalog__item  item">
+            <div class="item__img-area">
+              <a class="item__link" href="{{ product.href }}">
+                <img class="item__img" src="{{ product.thumb }}" width="258" height="305" alt="{{ product.name }}">
+              </a>
+              <button class="item__button button button__to-cart "type="button" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');">
+                <svg class="item__cart-icon" width="23" height="19" aria-labelledby="title-icon-cart" role="presentation">
+                  <title id="title-icon-cart">Иконка корзины</title>
+                  <use xlink:href="#icon-cart"></use>
+                </svg>
+                <span>
+                    {% if product.cart %}
+                      Добавлено
+                    {% else %}
+                      В корзину
+                    {% endif %}
+                    </span>
+              </button>
+            </div>
+            <div class="item__description">
+              <b class="item__name">{{ product.name }}</b>
+                {% if product.price %}
+                  <span class="item__price"> {% if not product.special %}
+                          {{ product.price }}
+                      {% else %} <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span> {% endif %}
+          </span>
+                {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+    </ul>
+      {{ pagination }}
+  </section>
+  <a class="page-content__up-button" href="#">
+    <span>&uarr;</span>
+    На верх
+    <span>&uarr;</span>
+  </a>
+</main>
+{{ footer }}

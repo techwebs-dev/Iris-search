@@ -1,0 +1,38 @@
+<form class="cart__form  cart-content" action="{{ action }}" method="post" enctype="multipart/form-data">
+	<div class="cart-content__top">
+		<span>Товары</span>
+	</div>
+	<ul class="cart-content__list">
+        {% for product in products %}
+
+
+			<li class="cart-content__item  buy-item">
+                {% if product.thumb %}
+					<img class="buy-item__img" src="{{ product.thumb }}" width="174" height="159" title="{{ product.name }}" alt="{{ product.name }}">
+                {% endif %}
+				<div class="buy-item__description">
+					<b class="buy-item__name"><a href="{{ product.href }}">{{ product.name }}</a></b>
+					<span class="buy-item__price"><span>Цена:</span>{{ product.price }}</span>
+				</div>
+				<div class="buy-item__controls">
+					<button class="buy-item__delete" onclick="cart.remove('{{ product.cart_id }}');" data-toggle="tooltip" type="button">&#10006;</button>
+					<div class="buy-item__count">
+						<input type="text"  name="quantity[{{ product.cart_id }}]" class="quant buy-item__value" value="{{ product.quantity }}" size="1"/>
+					</div>
+
+				</div>
+				</div>
+			</li>
+        {% endfor %}
+	</ul>
+	<div class="cart-content__amount">
+		<span>Всего к оплате:</span>
+		<span class="cart-content__total">
+          {% for total in totals %}
+              {% if total.id == 0 %}
+                  {{ total.text }}
+              {% endif %}
+          {% endfor %}
+        </span>
+	</div>
+</form>

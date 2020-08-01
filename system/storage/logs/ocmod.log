@@ -1,0 +1,399 @@
+2018-09-16 23:46:20 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 48
+LINE: 106
+LINE: 118
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 30
+LINE: 36
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 13
+----------------------------------------------------------------
+MOD: Better Search
+
+FILE: catalog/model/catalog/product.php
+CODE: = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
+LINE: 139
+LINE: 140
+LINE: 141
+LINE: 142
+LINE: 143
+LINE: 144
+LINE: 145
+LINE: 496
+LINE: 497
+LINE: 498
+LINE: 499
+LINE: 500
+LINE: 501
+LINE: 502
+----------------------------------------------------------------
+2018-09-17 20:23:33 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 48
+LINE: 106
+LINE: 118
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 30
+LINE: 36
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 13
+----------------------------------------------------------------
+MOD: Better Search
+
+FILE: catalog/model/catalog/product.php
+CODE: = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
+LINE: 139
+LINE: 140
+LINE: 141
+LINE: 142
+LINE: 143
+LINE: 144
+LINE: 145
+LINE: 496
+LINE: 497
+LINE: 498
+LINE: 499
+LINE: 500
+LINE: 501
+LINE: 502
+----------------------------------------------------------------
+MOD: Prosto filter
+
+FILE: catalog/controller/product/category.php
+CODE: public function index() {
+LINE: 4
+
+FILE: catalog/model/catalog/category.php
+CODE: getCategoryFilters($category_id)
+LINE: 14
+CODE: public function getCategories
+LINE: 19
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p2c.product_id = pf.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (pf.product_id = p.product_id)";
+LINE: 69
+LINE: 440
+CODE: $sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
+LINE: 120
+LINE: 516
+----------------------------------------------------------------
+2018-09-18 1:48:53 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 48
+LINE: 106
+LINE: 118
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 30
+LINE: 36
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 13
+----------------------------------------------------------------
+MOD: Better Search
+
+FILE: catalog/model/catalog/product.php
+CODE: = '" . $this->db->escape(utf8_strtolower($data['filter_name'])) . "'";
+LINE: 168
+LINE: 169
+LINE: 170
+LINE: 171
+LINE: 172
+LINE: 173
+LINE: 174
+LINE: 547
+LINE: 548
+LINE: 549
+LINE: 550
+LINE: 551
+LINE: 552
+LINE: 553
+----------------------------------------------------------------
+MOD: Prosto filter
+
+FILE: catalog/controller/product/category.php
+CODE: public function index() {
+LINE: 4
+
+FILE: catalog/model/catalog/category.php
+CODE: getCategoryFilters($category_id)
+LINE: 14
+CODE: public function getCategories
+LINE: 19
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p2c.product_id = pf.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (pf.product_id = p.product_id)";
+LINE: 98
+LINE: 491
+CODE: $sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
+LINE: 149
+LINE: 567
+----------------------------------------------------------------
+MOD: SmartiApps Price Slider
+CODE: $this->load->model('tool/image');
+LINE: 62
+CODE: $data['breadcrumbs'] = array();
+LINE: 182
+CODE: $path = '';
+LINE: 231
+CODE: $data['categories'] = array();
+LINE: 315
+CODE: $data['products'] = array();
+LINE: 342
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 377
+CODE: $data['limits'] = array();
+LINE: 521
+CODE: $pagination = new Pagination();
+LINE: 566
+CODE: return array(
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+2018-09-20 15:10:40 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 48
+LINE: 106
+LINE: 118
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 30
+LINE: 36
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 13
+----------------------------------------------------------------
+MOD: Prosto filter
+
+FILE: catalog/controller/product/category.php
+CODE: public function index() {
+LINE: 4
+
+FILE: catalog/model/catalog/category.php
+CODE: getCategoryFilters($category_id)
+LINE: 14
+CODE: public function getCategories
+LINE: 19
+
+FILE: catalog/model/catalog/product.php
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p2c.product_id = pf.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (pf.product_id = p.product_id)";
+LINE: 98
+LINE: 477
+CODE: $sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
+LINE: 149
+LINE: 553
+----------------------------------------------------------------
+MOD: SmartiApps Price Slider
+CODE: $this->load->model('tool/image');
+LINE: 62
+CODE: $data['breadcrumbs'] = array();
+LINE: 182
+CODE: $path = '';
+LINE: 231
+CODE: $data['categories'] = array();
+LINE: 315
+CODE: $data['products'] = array();
+LINE: 342
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 377
+CODE: $data['limits'] = array();
+LINE: 522
+CODE: $pagination = new Pagination();
+LINE: 567
+CODE: return array(
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+2018-09-20 15:13:48 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 48
+LINE: 106
+LINE: 118
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 30
+LINE: 36
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 13
+----------------------------------------------------------------
+MOD: Prosto filter
+
+FILE: catalog/controller/product/category.php
+CODE: public function index() {
+LINE: 4
+
+FILE: catalog/model/catalog/category.php
+CODE: getCategoryFilters($category_id)
+LINE: 14
+CODE: public function getCategories
+LINE: 19
+
+FILE: catalog/model/catalog/product.php
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p2c.product_id = pf.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (pf.product_id = p.product_id)";
+LINE: 98
+LINE: 477
+CODE: $sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
+LINE: 149
+LINE: 553
+----------------------------------------------------------------
+MOD: SmartiApps Price Slider
+CODE: $this->load->model('tool/image');
+LINE: 62
+CODE: $data['breadcrumbs'] = array();
+LINE: 182
+CODE: $path = '';
+LINE: 231
+CODE: $data['categories'] = array();
+LINE: 315
+CODE: $data['products'] = array();
+LINE: 342
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 377
+CODE: $data['limits'] = array();
+LINE: 522
+CODE: $pagination = new Pagination();
+LINE: 567
+CODE: return array(
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------
+2018-09-20 18:43:38 - MOD: Modification Default
+
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 48
+LINE: 106
+LINE: 118
+
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 30
+LINE: 36
+
+FILE: system/library/template/twig.php
+CODE: $loader = new \Twig_Loader_Filesystem(DIR_TEMPLATE);
+LINE: 13
+----------------------------------------------------------------
+MOD: Noticeup Livesearch
+
+FILE: catalog/controller/common/header.php
+CODE: $this->load->view('common/header', $data);
+LINE: 116
+
+FILE: catalog/view/theme/default/template/common/header.twig
+CODE: </head>
+LINE: 45
+CODE: </header>
+NOT FOUND - OPERATIONS ABORTED!
+
+FILE: catalog/controller/product/search.php
+CODE: $this->response->setOutput($this->load->view('product/search', $data));
+LINE: 454
+----------------------------------------------------------------
+MOD: Prosto filter
+
+FILE: catalog/controller/product/category.php
+CODE: public function index() {
+LINE: 4
+
+FILE: catalog/model/catalog/category.php
+CODE: getCategoryFilters($category_id)
+LINE: 14
+CODE: public function getCategories
+LINE: 19
+
+FILE: catalog/model/catalog/product.php
+CODE: $sql .= " LEFT JOIN " . DB_PREFIX . "product_filter pf ON (p2c.product_id = pf.product_id) LEFT JOIN " . DB_PREFIX . "product p ON (pf.product_id = p.product_id)";
+LINE: 98
+LINE: 477
+CODE: $sql .= " AND pf.filter_id IN (" . implode(',', $implode) . ")";
+LINE: 149
+LINE: 553
+----------------------------------------------------------------
+MOD: SmartiApps Price Slider
+CODE: $this->load->model('tool/image');
+LINE: 62
+CODE: $data['breadcrumbs'] = array();
+LINE: 182
+CODE: $path = '';
+LINE: 231
+CODE: $data['categories'] = array();
+LINE: 315
+CODE: $data['products'] = array();
+LINE: 342
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 377
+CODE: $data['limits'] = array();
+LINE: 522
+CODE: $pagination = new Pagination();
+LINE: 567
+CODE: return array(
+NOT FOUND - OPERATIONS ABORTED!
+----------------------------------------------------------------

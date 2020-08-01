@@ -1,0 +1,130 @@
+<form class="irises__sort-form  filter-form" action="#" method="get">
+	<button class="filter-form__filter" type="button">
+		<b class="filter-form__name">Фильтры товаров</b>
+		<div class="filter-form__icon">
+			<span>Элемент иконки фильтра</span>
+			<span>Элемент иконки фильтра</span>
+			<span>Элемент иконки фильтра</span>
+		</div>
+	</button>
+	<div class="filter-form__inner">
+		<div class="filter-form__item  filter-sort">
+			<b class="filter-sort__title  title  title--form">Сортировать по:</b>
+            {% for sorts in sorts %}
+                {% if sorts.value == '%s-%s'|format(sort, order) %}
+					<div class="filter-sort__item">
+						<input class="filter-sort__radio-button" id="sort-az" type="radio" name="sort" value="{{ sorts.href }}" checked>
+						<label class="filter-sort__label" for="sort-az">
+							<a href="{{ sorts.href }}" class="selected">
+								<span>{{ sorts.text }}</span>
+							</a>
+						</label>
+					</div>
+                {% else %}
+					<div class="filter-sort__item">
+						<input class="filter-sort__radio-button" id="sort-second" type="radio" name="sort" value="{{ sorts.href }}">
+						<label class="filter-sort__label" for="sort-second">
+							<a href="{{ sorts.href }}">
+								<span>{{ sorts.text }}</span>
+							</a>
+						</label>
+					</div>
+                {% endif %}
+            {% endfor %}
+		</div>
+        {#price#}
+		<div class="filter-form__item  filter-price">
+			<b class="filter-price__title  title  title--form">Цена:</b>
+            {% for prostofilter_group in prostofilter_groups %}
+			<div id="prostofilter-group{{ prostofilter_group.prostofilter_group_id }}">
+                {% set kolvo = 0 %}
+            {% for prostofilter in prostofilter_group.prostofilter %}
+                {% if prostofilter_group.prostofilter_group_id == 'price' %}
+                {% set minprice = prostofilter.name -1 %}
+                {% set maxprice = prostofilter.prostofilter_id + 1 %}
+                {% for priceprostofilter in prostofilter_category %}
+                    {% if priceprostofilter|slice(0,8) == 'minprice' %}
+                        {% set minprice = priceprostofilter|slice(8,10)|replace({'[':'',']':''}) %}
+                    {% endif %}
+                    {% if priceprostofilter|slice(0,8) == 'maxprice' %}
+                        {% set maxprice = priceprostofilter|slice(8,10)|replace({'[':'',']':''}) %}
+                    {% endif %}
+                {% endfor %}
+				<div class="filter-price__areas" id="ex21">
+					<input class="filter-price__input" id="ex2_min" type="number" name="filter-price__min" data-slider-min="{{ prostofilter.name -1 }}" data-slider-max="{{ prostofilter.prostofilter_id + 1 }}" data-slider-step="5" value="{{ minprice }}" data-slider-value="[{{ minprice }}]" placeholder="От">
+					<input class="filter-price__input" id="ex2_max" type="number" data-slider-min="{{ prostofilter.name -1 }}" data-slider-max="{{ prostofilter.prostofilter_id + 1 }}" data-slider-step="5" value="{{ maxprice }}" data-slider-value="[{{ maxprice }}]" placeholder="До">
+				</div>
+			<input id="ex2" type="text" class="span2" value="" data-slider-min="{{ prostofilter.name -1 }}" data-slider-max="{{ prostofilter.prostofilter_id + 1 }}" data-slider-step="5" data-slider-value="[{{ minprice }},{{ maxprice }}]"/>
+                {% else %}
+                {% set kolvo = kolvo + 1 %}
+                {% if kolvo == 7 %}
+				<a href="#colfil{{ prostofilter_group.prostofilter_group_id }}" data-toggle="collapse">Показать еще</a>
+				<div id="colfil{{ prostofilter_group.prostofilter_group_id }}" class="collapse">
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}</div>
+                {% if kolvo > 6 %}
+					</div>
+
+                {% endif %}
+            {% endfor %}
+		</div>
+        {#price end#}
+		<div class="filter-form__item  filter-display">
+			<b class="filter-display__title  title  title--form">Отображать на странице:</b>
+			<div class="form-group input-group input-group-sm">
+                {% for limits in limits %}
+                    {% if limits.value == limit %}
+						<div class="filter-display__item">
+							<input class="filter-display__radio-button" id="display-first" type="radio" name="display" value="{{ limits.href }}" checked>
+							<label class="filter-display__label" for="display-first">
+								<a href="{{ limits.href }}" class="selected">
+									<span>{{ limits.text }}</span>
+								</a>
+							</label>
+						</div>
+                    {% else %}
+						<div class="filter-display__item">
+							<input class="filter-display__radio-button" id="display-second" type="radio" name="display" value="{{ limits.href }}">
+							<label class="filter-display__label" for="display-second">
+								<a href="{{ limits.href }}">
+									<span>{{ limits.text }}</span>
+								</a>
+							</label>
+						</div>
+                    {% endif %}
+                {% endfor %}
+			</div>
+		</div>
+	</div>
+	<button type="button" id="button-prostofilter" class="filter-form__button  button  button--filter" >Применить фильтры</button>
+</form>
+<script type="text/javascript"><!--
+$( document ).ready(function() {
+	$('input[name^=\'prostofilter\']:checked').each(function(element) {
+		$movingel = $(this).parent().parent();
+		if ($movingel.parent().parent().hasClass('collapse')) {
+			$movingel.prependTo($movingel.parent().parent().parent());
+		}
+		else {
+			$movingel.prependTo($movingel.parent().parent());
+		}
+	});
+});
+
+$('#button-prostofilter').on('click', function() {
+	prostofilter = [];
+
+	$('input[name^=\'prostofilter\']:checked').each(function(element) {
+		prostofilter.push(this.value);
+	});
+	if (document.getElementById('ex2') != null) {
+            prostofilter.push('minprice[' + slider.getValue()[0] + ']');
+            prostofilter.push('maxprice[' + slider.getValue()[1] + ']');
+    }
+	location = '{{ action }}&filter=' + prostofilter.join(',');
+});
+if (document.getElementById('ex2') != null) {
+	var slider = new Slider('#ex2', {});
+}
+//--></script> 

@@ -1,0 +1,70 @@
+<style type="text/css">
+    .review {
+        border-bottom: 1px #eee solid;
+    }
+
+    .reviews-btn {
+        float: right !important;
+    }
+
+    .reviews-caption {
+        min-height: 0 !important;
+    }
+
+    .reviews-description {
+        font-family: Georgia, Times, "Times New Roman", serif;
+        font-style: italic;
+    }
+
+    .reviews-sign {
+        text-align: right;
+    }
+
+    .reviews-author {
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .reviews-date {
+        text-align: right;
+    }
+</style>
+
+{% if (module_header) %} 
+<h3>{{ module_header }}</h3>
+{% endif %}
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="product-thumb transition">
+            {% for review in reviews %} 
+            <div class="review">
+                <div class="image"><a href="{{ review['prod_href'] }}"><img src="{{ review['prod_thumb'] }}" alt="{{ review['prod_name'] }}" title="{{ review['prod_name'] }}" class="img-responsive" /></a></div>
+                <div class="caption reviews-caption">
+                    <h4><a href="{{ review['prod_href'] }}">{{ review['prod_name'] }}</a></h4>
+                    <p class="reviews-description">{{ review['description'] }}</p>
+                    {% if (review['rating']) %} 
+                    <div class="rating">
+                        {% set i = 1 %}{% for i in i..5 %} 
+                        {% if (review['rating'] < i) %} 
+                        <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                        {% else %} 
+                        <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                        {% endif %} 
+                        {% endfor %} 
+                    </div>
+                    {% endif %} 
+                    <div class="reviews-sign">
+                        <div class="reviews-author">{{ review['author'] }}</div>
+                        <div class="reviews-date">{{ review['date_added'] }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} 
+            {% if (show_all_button) %} 
+            <div class="button-group">
+                <button type="button" class="reviews-btn" onclick="window.location.href='{{ link_all_reviews }}'">{{ text_all_reviews }}</button>
+            </div>
+            {% endif %} 
+        </div>
+    </div>
+</div>

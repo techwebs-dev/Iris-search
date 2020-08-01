@@ -1,0 +1,80 @@
+<form class="irises__sort-form  filter-form" action="#" method="get">
+  <button class="filter-form__filter" type="button">
+    <b class="filter-form__name">Фильтры товаров</b>
+    <div class="filter-form__icon">
+      <span>Элемент иконки фильтра</span>
+      <span>Элемент иконки фильтра</span>
+      <span>Элемент иконки фильтра</span>
+    </div>
+  </button>
+  <div class="filter-form__inner">
+    <div class="filter-form__item  filter-sort">
+      <b class="filter-sort__title  title  title--form">Сортировать по:</b>
+        {% for sorts in sorts %}
+            {% if sorts.value == '%s-%s'|format(sort, order) %}
+              <div class="filter-sort__item">
+                <input class="filter-sort__radio-button" id="sort-az" type="radio" name="sort" value="{{ sorts.href }}" checked>
+                <label class="filter-sort__label" for="sort-az">
+                  <a href="{{ sorts.href }}" class="selected">
+                    <span>{{ sorts.text }}</span>
+                  </a>
+                </label>
+              </div>
+            {% else %}
+              <div class="filter-sort__item">
+                <input class="filter-sort__radio-button" id="sort-second" type="radio" name="sort" value="{{ sorts.href }}">
+                <label class="filter-sort__label" for="sort-second">
+                  <a href="{{ sorts.href }}">
+                    <span>{{ sorts.text }}</span>
+                  </a>
+                </label>
+              </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="filter-form__item  filter-price">
+      <b class="filter-price__title  title  title--form">Цена:</b>
+      <div class="filter-price__areas formCost">
+        <input class="filter-price__input" max="{{ p_high }}" onchange="filter();" min="{{ p_low }}" type="number" id="min-cost" name="min-cost" step="10" value="{{ p_low }}">
+        <input class="filter-price__input" type="number" onchange="filter();" id="max-cost" value="{{ p_high }}" name="max-cost" min="{{ p_low }}" max="{{ p_high }}" step="10">
+      </div>
+
+      <div id="scale-slider"></div>
+
+      <div class="filter-price__range sliderCont">
+        <div id="slider" class="nstSlider ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-range_min="{{ prices.minp }}" data-range_max="{{ prices.maxp }}"  data-cur_min="{{ p_low }}"    data-cur_max="{{ p_high }}">
+          <div class="ui-slider-range ui-widget-header filter-price__difference" style="left: 0%; width: 100%;"></div>
+          <a class="ui-slider-handle ui-state-default ui-corner-all filter-price__pin  filter-price__pin--min" href="#" style="left: 0%;"></a>
+          <a class="ui-slider-handle ui-state-default ui-corner-all filter-price__pin  filter-price__pin--max" href="#" style="left: 100%;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="filter-form__item  filter-display">
+      <b class="filter-display__title  title  title--form">Отображать на странице:</b>
+      <div class="form-group input-group input-group-sm">
+          {% for limits in limits %}
+              {% if limits.value == limit %}
+                <div class="filter-display__item">
+                  <input class="filter-display__radio-button" id="display-first" type="radio" name="display" value="{{ limits.href }}" checked>
+                  <label class="filter-display__label" for="display-first">
+                    <a href="{{ limits.href }}" class="selected">
+                      <span>{{ limits.text }}</span>
+                    </a>
+                  </label>
+                </div>
+              {% else %}
+                <div class="filter-display__item">
+                  <input class="filter-display__radio-button" id="display-second" type="radio" name="display" value="{{ limits.href }}">
+                  <label class="filter-display__label" for="display-second">
+                    <a href="{{ limits.href }}">
+                      <span>{{ limits.text }}</span>
+                    </a>
+                  </label>
+                </div>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+  </div>
+  <input class="filter-form__button  button  button--filter" type="submit" value="Применить фильтры">
+</form>

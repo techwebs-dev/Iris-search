@@ -1,0 +1,27 @@
+<div class="swiper-viewport">
+  <div id="slideshow{{ module }}" class="swiper-container">
+    <div class="swiper-wrapper">
+      {% for banner in banners %}
+        <div class="page-header__about 1 swiper-slide" style="background: url({{ banner.image }}) no-repeat top center;">
+          <h1 class="page-header__title  title  title--big">Iris for you</h1>
+          <p class="page-header__text">{{ banner.title }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{#<script type="text/javascript">#}
+    {#$('#slideshow{{ module }}').swiper({#}
+        {#mode: 'horizontal',#}
+        {#effect: 'fade',#}
+        {#slidesPerView: 1,#}
+        {#pagination: '.slideshow{{ module }}',#}
+        {#paginationClickable: false,#}
+        {#nextButton: '.swiper-button-next',#}
+        {#prevButton: '.swiper-button-prev',#}
+        {#spaceBetween: 30,#}
+        {#autoplay: 5000,#}
+        {#autoplayDisableOnInteraction: true,#}
+        {#loop: true#}
+    {#});#}
+{#</script>#}

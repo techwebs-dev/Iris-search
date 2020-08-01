@@ -1,0 +1,41 @@
+<section class="page-content__new  new-products">
+  <h2 class="new-products__title  title">{{ heading_title }}</h2>
+  <div class="slider">
+    <ul class="new-products__list  slider__list">
+        {% for product in products %}
+      <li class="new-products__item  new-product  slider__item  slider__item--active">
+        <div class="new-product__img-area">
+          <a class="new-product__link" href="{{ product.href }}">
+            <img class="new-product__img" src="{{ product.thumb }}" width="258" height="305" alt="{{ product.name }}">
+          </a>
+          <button class="new-product__button  button  button__to-cart" onclick="cart.add('{{ product.product_id }}');" type="button">
+            <svg class="new-product__cart-icon" width="23" height="19" aria-labelledby="title-icon-cart" role="presentation">
+              <title id="title-icon-cart">Иконка корзины</title>
+              <use xlink:href="#icon-cart"></use>
+            </svg>
+            <span>В корзину</span>
+          </button>
+        </div>
+        <div class="new-product__description">
+          <b class="new-products__name  new-product__name">{{ product.name }}</b>
+            {% if product.price %}
+              <span class="new-product__price">
+              {% if not product.special %}
+                  {{ product.price }}
+              {% else %}
+                <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span> {% endif %}
+            </span>
+            {% endif %}
+        </div>
+      </li>
+        {% endfor %}
+    </ul>
+    <ul class="slider__pagination  slider__pagination--new-products">
+      <li class="slider__number  slider__number--active">Первый слайд</li>
+      <li class="slider__number">Второй слайд</li>
+      <li class="slider__number">Третий слайд</li>
+    </ul>
+    <button class="slider__button  slider__button--left  slider__button--new-products" type="button" disabled>Left</button>
+    <button class="slider__button  slider__button--right  slider__button--new-products" type="button">Right</button>
+  </div>
+</section>

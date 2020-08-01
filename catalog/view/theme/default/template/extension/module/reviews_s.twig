@@ -1,0 +1,25 @@
+<section class="page-content__reviews  reviews">
+    {% if (module_header) %}
+        <h2 class="reviews__title  title">{{ module_header }}</h2>
+    {% endif %}
+    <div class="reviews__content  slider">
+        <ul class="reviews__list  slider__list">
+            {% for review in reviews %}
+            <li class="reviews__item  slider__item">
+                <p class="reviews__text">{{ review['description'] }}</p>
+                <div class="reviews__author">
+                    <div class="reviews__photo">Фото покупателя оставившего отзыв</div>
+                    <b class="reviews__name">{{ review['author'] }}</b>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <ul class="slider__pagination">
+            <li class="slider__number">Первый слайд</li>
+            <li class="slider__number">Второй слайд</li>
+            <li class="slider__number">Третий слайд</li>
+        </ul>
+        <button class="slider__button  slider__button--left" type="button" disabled>Left</button>
+        <button class="slider__button  slider__button--right" type="button">Right</button>
+    </div>
+</section>

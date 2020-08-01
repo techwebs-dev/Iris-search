@@ -1,0 +1,43 @@
+<section class="page-content__contacts  contacts">
+  <h2 class="contacts__title  title">Наши контакты</h2>
+  <p class="contacts__text">Мы всегда рады ответить на ваши вопросы. Ниже Вы найдете информацию о наших контактах.</p>
+  <ul class="contacts__list">
+    <li class="contacts__item">
+      <svg class="contacts__icon  contacts__icon--mail" width="26" height="17" aria-labelledby="title-icon-email" role="img">
+        <title id="title-icon-email">Иконка почты</title>
+        <use xlink:href="#icon-email"></use>
+      </svg>
+      <a class="contacts__emal" href="mailto:irisforyou@ukr.net">irisforyou@ukr.net</a>
+    </li>
+    <li class="contacts__item">
+      <svg class="contacts__icon  contacts__icon--map" width="21" height="30" aria-labelledby="title-icon-map" role="img">
+        <title id="title-icon-map">Иконка метки на карте</title>
+        <use xlink:href="#icon-map"></use>
+      </svg>
+      <a class="contacts__location" href="#">г. Херсон<br>ул. Херсонская 0</a>
+    </li>
+    <li class="contacts__item">
+      <svg class="contacts__icon  contacts__icon--phone" width="20" height="23" aria-labelledby="title-icon-phone" role="img">
+        <title id="title-icon-phone">Иконка телефона</title>
+        <use xlink:href="#icon-phone"></use>
+      </svg>
+      <a class="contacts__phone" href="tel:+380000000000">{{ telephone }}</a>
+    </li>
+  </ul>
+  <form class="contacts__form  contact-form" action="{{ action }}" method="post" enctype="multipart/form-data">
+    <p class="contact-form__title">Напишите нам что-нибудь хорошее и мы непременно ответим вам (нет)</p>
+    <div class="contact-form__inner">
+      <div class="contact-form__part">
+        <input class="contact-form__item" type="text" value="{{ name }}" name="name" placeholder="Имя" autocomplete="on">
+        <input class="contact-form__item" type="text" value="{{ fam }}" name="fam" placeholder="Фамилия" autocomplete="on">
+        <input class="contact-form__item" type="email" value="{{ email }}" name="email" placeholder="Email" autocomplete="on">
+      </div>
+      <div class="contact-form__part">
+        <textarea class="contact-form__item" name="enquiry" cols="30" rows="10" placeholder="Сообщение" autocomplete="on">
+          {{ enquiry }}
+        </textarea>
+      </div>
+    </div>
+    <input class="contact-form__button  button  button--form" type="submit" value="Отправить">
+  </form>
+</section>

@@ -1,0 +1,76 @@
+{{ header }} 
+<style type="text/css">
+    .reviews-description {
+        font-family: Georgia, Times, "Times New Roman", serif;
+        font-style: italic;
+    }
+
+    .reviews-sign {
+        text-align: right;
+    }
+
+    .reviews-author {
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .reviews-date {
+        text-align: right;
+    }
+</style>
+<div class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %} 
+    <li><a href="{{ breadcrumb['href'] }}">{{ breadcrumb['text'] }}</a></li>
+    {% endfor %} 
+  </ul>
+  <div class="row">{{ column_left }} 
+    {% if (column_left and column_right) %} 
+    {% set class = 'col-sm-6' %} 
+    {% elseif (column_left or column_right) %} 
+    {% set class = 'col-sm-9' %} 
+    {% else %} 
+    {% set class = 'col-sm-12' %} 
+    {% endif %} 
+    <div id="content" class="{{ class }}">{{ content_top }} 
+      <h1>{{ heading_title }}</h1>
+      {% if (reviews) %} 
+      <div class="row">
+        {% for review in reviews %} 
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image"><a href="{{ review['prod_href'] }}"><img src="{{ review['prod_thumb'] }}" alt="{{ review['prod_name'] }}" title="{{ review['prod_name'] }}" class="img-responsive" /></a></div>
+            <div class="caption">
+              <h4><a href="{{ review['prod_href'] }}">{{ review['prod_name'] }}</a></h4>
+              {% if (review['rating']) %} 
+              <div class="rating">
+                {% set i = 1 %}{% for i in i..5 %} 
+                {% if (review['rating'] < i) %} 
+                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                {% else %} 
+                <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                {% endif %} 
+                {% endfor %} 
+              </div>
+              {% endif %} 
+              <p  class="reviews-description">{{ review['description'] }}</p>
+              <div class="reviews-sign">
+                <div class="reviews-author">{{ review['author'] }}</div>
+                <div class="reviews-date">{{ review['date_added'] }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %} 
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-left">{{ pagination }}</div>
+        <div class="col-sm-6 text-right">{{ results }}</div>
+      </div>
+      {% else %} 
+      <p>{{ text_empty }}</p>
+      {% endif %} 
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

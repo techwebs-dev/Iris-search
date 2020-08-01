@@ -1,0 +1,21 @@
+{% if categories %}
+    {% for category in categories %}
+      <li class="main-nav__item  main-nav__item--iris main-nav__item--{{ category.id }}">
+        <a class="main-nav__link  main-nav__link--iris main-nav__link--{{ category.id }}" href="{{ category.href }}">
+          <svg class="main-nav__icon  main-nav__icon--iris" width="30" height="20" aria-labelledby="title-icon-flower-iris" role="presentation">
+            <title id="title-icon-flower-iris">{{ category.name }}</title>
+            <use xlink:href="#icon-flower-iris"></use>
+          </svg>
+          <span>{{ category.name }}</span>
+        </a>
+      </li>
+    {% endfor %}
+{% endif %}
+<li class="main-nav__item  main-nav__item--contacts">
+  <a class="main-nav__link  main-nav__link--contacts" href="{{ contact }}">
+    <svg class="main-nav__icon  main-nav__icon--contacts" width="20" height="23" aria-labelledby="title-icon-phone" role="img">
+      <use xlink:href="#icon-phone"></use>
+    </svg>
+    <span>{{ text_contact }}</span>
+  </a>
+</li>

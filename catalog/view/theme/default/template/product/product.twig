@@ -1,0 +1,80 @@
+{{ header }}
+{{ content_new }}
+</header>
+<main class="page-content irises" id="content">
+    <h2 class="irises__title  title">Каталог ирисов</h2>
+    <span class="page-content__back-button">
+      <a id="back-button" href="{{ back }}">Назад в каталог</a>
+    </span>
+    <section class="page-content__item  opened-item">
+        <div class="opened-item__img-area">
+            {% if thumb or images %}
+                {% if thumb %}
+                    <a href="{{ popup }}" target="_blank" title="{{ heading_title }}">
+                        <picture>
+                            <source media="(min-width: 1200px)" srcset="{{ thumb }}">
+                            <source media="(min-width: 768px)" srcset="{{ thumb }}">
+                            <img class="opened-item__img" src="{{ thumb }}" alt="{{ heading_title }}">
+                        </picture>
+                    </a>
+                {% endif %}
+                {% if images %}
+                    <ul class="opened-item__miniatures">
+                    {% for image in images %}
+                        <li><a href="{{ image.popup }}" title="{{ heading_title }}"> <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
+                    {% endfor %}
+                {% endif %}
+                </ul>
+            {% endif %}
+            <button class="opened-item__button" onclick="cart.add('{{ product_id }}', '1');" type="button">
+                <svg class="opened-item__cart-icon" width="23" height="19" aria-labelledby="title-icon-cart" role="presentation">
+                    <title id="title-icon-cart">Иконка корзины</title>
+                    <use xlink:href="#icon-cart"></use>
+                </svg>
+                <span>
+
+                    <span>
+                        В корзину
+                    </span>
+                </span>
+            </button>
+        </div>
+        <div class="opened-item__description">
+            <b class="opened-item__name">{{ heading_title }}</b>
+            <span class="opened-item__price">
+                {% if price %}
+                    {% if not special %}
+                        {{ price }}
+                    {% else %}
+                        <span style="text-decoration: line-through;">{{ price }}</span>
+                        {{ special }}
+                    {% endif %}
+                   {% if discounts %}
+                    {% for discount in discounts %}
+                        {{ discount.quantity }}{{ text_discount }}{{ discount.price }}</br>
+                    {% endfor %}
+                {% endif %}
+                {% endif %}
+            </span>
+            <div class="opened-item__text">
+                <span class="opened-item__about-title">Описание товара:</span>
+                <p class="opened-item__about">
+                    <span>
+                    {% for attribute_group in attribute_groups %}
+                        {% for attribute in attribute_group.attribute %}
+                            {{ attribute.text }}
+                        {% endfor %}
+                    {% endfor %}
+                    </span>
+                    {{ description }}
+                </p>
+            </div>
+        </div>
+    </section>
+    <a class="page-content__up-button" href="#">
+        <span>&uarr;</span>
+        На верх
+        <span>&uarr;</span>
+    </a>
+</main>
+{{ footer }} 
